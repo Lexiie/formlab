@@ -1,0 +1,9 @@
+### New submission
+POST http://localhost:8787/api/submissions
+Content-Type: application/json
+Idempotency-Key: 5f0f9f8a-3d13-4e50-a267-bdc05b4d8e92
+
+{"formId":"grant-demo","payload":{"projectTitle":"Example","requestedAmount":1000}}
+
+### Replay exactly same request/key; expect 200 replayed=true
+### Change payload but keep key; expect 409

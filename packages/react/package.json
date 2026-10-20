@@ -1,0 +1,10 @@
+{
+  "name": "@formlab/react",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": { "build": "tsc -b" },
+  "peerDependencies": { "react": "^19.0.0", "react-hook-form": "^7.0.0" },
+  "dependencies": { "@formlab/core": "workspace:*" }
+}

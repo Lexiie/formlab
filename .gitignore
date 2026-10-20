@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build
+dist/
+.vite/
+.wrangler/
+
+# env/secrets
+.env
+.env.*
+
+# os/editor
+.DS_Store
+.idea/
+.vscode/
+
+# markdown except root README
+*.md
+!README.md
+apps/**/*.md
+.github/**/*.md

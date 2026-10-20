@@ -1,0 +1,16 @@
+{
+  "name": "formlab-web",
+  "main": "src/worker.ts",
+  "compatibility_date": "2025-01-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "formlab-db",
+      "database_id": "b9e28c48-50e3-4b71-a0a0-781f26ca62f9"
+    }
+  ]
+}
