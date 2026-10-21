@@ -72,7 +72,20 @@ export default function App() {
               </>
             )}
             {step === 3 && (
-              <pre className="bg-[var(--panel)] border border-[var(--border)] p-3 text-xs overflow-auto">{JSON.stringify(draft, null, 2)}</pre>
+              <div className="space-y-3">
+                <div className="border border-[var(--border)]">
+                  <div className="px-3 py-2 border-b border-[var(--border)] text-xs font-semibold">Review summary</div>
+                  <div className="p-3 space-y-1 text-xs">
+                    <Row k="Full name" v={draft.name || '—'} />
+                    <Row k="Email" v={draft.email || '—'} />
+                    <Row k="Project title" v={draft.title || '—'} />
+                    <Row k="Description" v={draft.desc || '—'} />
+                    <Row k="Requested amount" v={draft.amount || '—'} />
+                    <Row k="Duration (months)" v={draft.duration || '—'} />
+                  </div>
+                </div>
+                <pre className="bg-[var(--panel)] border border-[var(--border)] p-3 text-xs overflow-auto">{JSON.stringify(draft, null, 2)}</pre>
+              </div>
             )}
           </div>
 
