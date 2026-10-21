@@ -1,0 +1,729 @@
+[
+  {
+    "id": "TC001",
+    "title": "Submit a completed grant application",
+    "description": "A user can complete the full form, submit it from review, and see the submission status update to a successful resolved state.",
+    "category": "Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Submit the completed application"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a successful submission status is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Complete and review a new grant application",
+    "description": "A user can fill out the applicant, project, and budget steps, reach review, and see the completed application data before submitting.",
+    "category": "Multi-step form navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the review summary displays the entered application data"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Submit a completed application from the review step",
+    "description": "This verifies that a fully completed grant application can be finalized successfully from the review step.",
+    "category": "Failure Lab",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the budget step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the review step"
+      },
+      {
+        "type": "action",
+        "description": "Submit the application"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a successful submission confirmation is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the application is no longer in the editing flow"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Go back and update application details",
+    "description": "A user can return to an earlier step, change entered information, and see the updated values reflected in review.",
+    "category": "Multi-step form navigation",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Click to go back to the previous step"
+      },
+      {
+        "type": "action",
+        "description": "Click to go back to the previous step"
+      },
+      {
+        "type": "action",
+        "description": "Update the project details fields with different valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the review summary reflects the updated application data"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Enter an uncertain state after simulating a lost response",
+    "description": "This verifies that a completed grant application can be submitted and then moved into the uncertain recovery state when the lost response simulation is triggered.",
+    "category": "Failure Lab",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the budget step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the review step"
+      },
+      {
+        "type": "action",
+        "description": "Submit the application"
+      },
+      {
+        "type": "action",
+        "description": "Simulate lost response"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the submission enters an uncertain recovery state"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a recovery action is available for the pending submission"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Restore a saved draft after refreshing the app",
+    "description": "A user can refresh midway through editing, detect that a draft is available, restore it, and continue editing without losing progress.",
+    "category": "Draft autosave and restore",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Refresh the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a saved draft is available"
+      },
+      {
+        "type": "action",
+        "description": "Restore the saved draft"
+      },
+      {
+        "type": "action",
+        "description": "Continue editing the form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the previously entered form data is preserved"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Recover a pending submission after an uncertain response",
+    "description": "This verifies that a submission left in the uncertain state can be retried until it resolves successfully.",
+    "category": "Failure Lab",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the budget step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the review step"
+      },
+      {
+        "type": "action",
+        "description": "Submit the application"
+      },
+      {
+        "type": "action",
+        "description": "Simulate lost response"
+      },
+      {
+        "type": "action",
+        "description": "Retry the pending submission"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the submission is resolved from the pending state"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the application returns to a stable submitted state"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Recover from a pending submission and retry",
+    "description": "A user can reach the uncertain submission state after submitting, then retry the pending submission until it resolves.",
+    "category": "Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Submit the completed application"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a pending recovery state is visible"
+      },
+      {
+        "type": "action",
+        "description": "Retry the pending submission"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the submission resolves to a final status"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Preserve the application state while moving backward and forward through the flow",
+    "description": "This verifies that information entered in earlier steps remains available when navigating back and forth through the grant application flow.",
+    "category": "Failure Lab",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Return to the applicant step"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the previously entered applicant information is still present"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the project step remains accessible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Continue editing after restoring a draft and see review update",
+    "description": "A user can restore a saved draft, change earlier fields, and confirm the review summary updates to match the latest edits.",
+    "category": "Draft autosave and restore",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Refresh the page"
+      },
+      {
+        "type": "action",
+        "description": "Restore the saved draft"
+      },
+      {
+        "type": "action",
+        "description": "Change one of the earlier form fields to a different valid value"
+      },
+      {
+        "type": "action",
+        "description": "Move through the remaining steps to review"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the review summary reflects the latest restored edits"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC011",
+    "title": "Simulate a lost response after submission commit",
+    "description": "A user can use the failure simulation mode to trigger an uncertain submission state after a committed submission and see the recovery UI.",
+    "category": "Submission",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Click to move to the next step"
+      },
+      {
+        "type": "action",
+        "description": "Enable the failure simulation for a lost response after commit"
+      },
+      {
+        "type": "action",
+        "description": "Submit the completed application"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the uncertain submission recovery state is visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC012",
+    "title": "Keep the current step data when moving between review and earlier steps",
+    "description": "This verifies that editing earlier form steps after reaching review updates the submitted summary without losing the application progress.",
+    "category": "Failure Lab",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the budget step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the review step"
+      },
+      {
+        "type": "action",
+        "description": "Return to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Update the project details"
+      },
+      {
+        "type": "action",
+        "description": "Proceed back to the review step"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the review summary reflects the updated project information"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the application remains on a complete review state"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC013",
+    "title": "Discard a saved draft and return to a blank form",
+    "description": "A user can refresh after editing, discard the saved draft, and see the application reset to an empty state.",
+    "category": "Draft autosave and restore",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details fields with valid values"
+      },
+      {
+        "type": "action",
+        "description": "Refresh the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a saved draft is available"
+      },
+      {
+        "type": "action",
+        "description": "Discard the saved draft"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the form is reset to a blank state"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Show the review summary for a completed application",
+    "description": "This verifies that a completed application reaches the review step and displays the compiled submission details before final submission.",
+    "category": "Failure Lab",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the budget step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the review step"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the review summary is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the application is ready for final submission"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Allow another recovery attempt after a pending submission remains unresolved",
+    "description": "This verifies that a submission still marked pending can be retried again from the recovery flow without breaking the application state.",
+    "category": "Failure Lab",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the applicant details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the project step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the project details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the budget step"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the budget details with valid information"
+      },
+      {
+        "type": "action",
+        "description": "Proceed to the review step"
+      },
+      {
+        "type": "action",
+        "description": "Submit the application"
+      },
+      {
+        "type": "action",
+        "description": "Simulate lost response"
+      },
+      {
+        "type": "action",
+        "description": "Retry the pending submission"
+      },
+      {
+        "type": "action",
+        "description": "Retry the pending submission again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the application still shows a recoverable submission state"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the interface does not lose the submitted application"
+      }
+    ],
+    "priority": "Low"
+  }
+]

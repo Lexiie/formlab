@@ -1,0 +1,64 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - React
+  - Vite
+  - Tailwind CSS
+routes:
+  - path: /
+    file: apps/web/src/App.tsx
+    auth_required: false
+    description: FormLab grant application demo
+features:
+  - name: Multi-step form navigation
+    description: Navigate through Applicant, Project, Budget, Review steps
+    files:
+      - apps/web/src/App.tsx
+    entry_route: /
+    user_interactions:
+      - Fill form fields
+      - Click Next/Back
+      - Review JSON output
+    api_calls: []
+    auth_required: false
+  - name: Draft autosave and restore
+    description: Form drafts persist in IndexedDB and can be restored
+    files:
+      - packages/core/src/index.ts
+      - packages/react/src/index.tsx
+    entry_route: /
+    user_interactions:
+      - Edit fields
+      - Refresh page
+      - Click Restore or Discard
+    api_calls: []
+    auth_required: false
+  - name: Submission
+    description: Submit form to backend API
+    files:
+      - packages/react/src/index.tsx
+      - apps/web/src/worker.ts
+    entry_route: /
+    user_interactions:
+      - Click Submit
+      - Click Retry pending on uncertain
+    api_calls:
+      - method: POST
+        endpoint: /api/submissions
+    auth_required: false
+  - name: Failure Lab
+    description: Simulate lost response after commit
+    files:
+      - apps/web/src/App.tsx
+    entry_route: /
+    user_interactions:
+      - Click Simulate lost response
+    api_calls:
+      - method: POST
+        endpoint: /api/submissions
+    auth_required: false
+known_limitations:
+  - issue: TestSprite GitHub App integration not yet verified
+    location: docs/12-testsprite-integration.md
+    impact: PR checks not executed by TestSprite
