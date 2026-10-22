@@ -22,6 +22,8 @@ https://formlab-web.lendha930.workers.dev
 
 ## Current evidence
 - Unit tests: 8 passing (core 5, server 3).
-- D1 integration: local + remote migrations applied; API verified.
+- D1 integration: 4 passing (create, replay, conflict, concurrent).
+- E2E: 3 passing (smoke, draft restore, lost response).
 - Frontend build: success.
 - Impeccable audit: 0 findings.
+- TestSprite: 5/5 passed (PR #3).
