@@ -19,5 +19,8 @@ dist/
 # markdown except root README
 *.md
 !README.md
+!testsprite_tests/**/*.md
 apps/**/*.md
 .github/**/*.md
+!testsprite_tests/
+!testsprite_tests/**

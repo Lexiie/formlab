@@ -110,7 +110,6 @@ export default function App() {
           <Panel title="Failure Lab">
             <div className="space-y-2 text-xs">
               <button className="w-full px-3 py-1.5 border border-[var(--border)] hover:border-[var(--danger)]" onClick={lab.submitWithDrop}>Simulate lost response (after commit)</button>
-              {lab.submissionStatus === 'uncertain' && <button className="w-full px-3 py-1.5 border border-[var(--border)]" onClick={lab.retry}>Retry pending</button>}
               <div className="text-[var(--muted)]">Status: {lab.submissionStatus}</div>
             </div>
           </Panel>
