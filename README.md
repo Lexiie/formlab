@@ -43,3 +43,7 @@ FormLab is an open-source, local-first TypeScript SDK that helps existing React 
 - Unit: 8 passing
 - D1 integration: 4 passing
 - E2E smoke: 1 passing
+
+## TestSprite
+- Executed on PR #3: 5/5 passed.
+- Report: testsprite_tests/testsprite-mcp-test-report.md

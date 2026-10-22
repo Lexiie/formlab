@@ -22,3 +22,5 @@ dist/
 !testsprite_tests/**/*.md
 apps/**/*.md
 .github/**/*.md
+!testsprite_tests/
+!testsprite_tests/**

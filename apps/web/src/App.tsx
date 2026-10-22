@@ -72,7 +72,20 @@ export default function App() {
               </>
             )}
             {step === 3 && (
-              <pre className="bg-[var(--panel)] border border-[var(--border)] p-3 text-xs overflow-auto">{JSON.stringify(draft, null, 2)}</pre>
+              <div className="space-y-3">
+                <div className="border border-[var(--border)]">
+                  <div className="px-3 py-2 border-b border-[var(--border)] text-xs font-semibold">Review summary</div>
+                  <div className="p-3 space-y-1 text-xs">
+                    <Row k="Full name" v={draft.name || '—'} />
+                    <Row k="Email" v={draft.email || '—'} />
+                    <Row k="Project title" v={draft.title || '—'} />
+                    <Row k="Description" v={draft.desc || '—'} />
+                    <Row k="Requested amount" v={draft.amount || '—'} />
+                    <Row k="Duration (months)" v={draft.duration || '—'} />
+                  </div>
+                </div>
+                <pre className="bg-[var(--panel)] border border-[var(--border)] p-3 text-xs overflow-auto">{JSON.stringify(draft, null, 2)}</pre>
+              </div>
             )}
           </div>
 
@@ -97,7 +110,6 @@ export default function App() {
           <Panel title="Failure Lab">
             <div className="space-y-2 text-xs">
               <button className="w-full px-3 py-1.5 border border-[var(--border)] hover:border-[var(--danger)]" onClick={lab.submitWithDrop}>Simulate lost response (after commit)</button>
-              {lab.submissionStatus === 'uncertain' && <button className="w-full px-3 py-1.5 border border-[var(--border)]" onClick={lab.retry}>Retry pending</button>}
               <div className="text-[var(--muted)]">Status: {lab.submissionStatus}</div>
             </div>
           </Panel>
