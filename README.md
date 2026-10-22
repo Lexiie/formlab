@@ -97,7 +97,7 @@ if (lab.submissionStatus === 'uncertain') {
 
 - Unit tests: 8 passing
 - D1 integration tests: 4 passing
-- Playwright E2E: 3 passing
+- Playwright E2E: 5 passing
 - TestSprite: 5/5 passed (PR #3)
 - Report: `testsprite_tests/testsprite-mcp-test-report.md`
 - Evidence: https://www.testsprite.com/dashboard-v3/o/75d9e46a-15c5-5bf8-81fb-91671d3a9934/projects/486db87b-c781-4f67-97a6-bc16cf4bb3a2/execution/00ca09cb-9c53-4e5f-882d-c9439d7cc79e
