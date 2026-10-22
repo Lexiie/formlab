@@ -1,0 +1,17 @@
+{
+  "status": "init",
+  "scope": "codebase",
+  "type": "frontend",
+  "localEndpoint": "http://localhost:5173/",
+  "serverPort": 36923,
+  "executionArgs": {
+    "projectName": "formlab-implementation-pack",
+    "projectPath": "/home/lex/contri/hackathon/formlab-implementation-pack",
+    "testIds": [],
+    "additionalInstruction": "",
+    "serverMode": "development",
+    "envs": {},
+    "envsFile": "/home/lex/.testsprite/mcp/session-ca3e394e8405abb6.json"
+  },
+  "projectKey": "e129b1c6-3455-400c-b680-720088fcb5db"
+}
