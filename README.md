@@ -1,49 +1,93 @@
-# FormLab — implementation-ready specification
+# FormLab — Resilient Forms for React
 
-**Status:** Build specification, not implemented code. **Target:** TestSprite Hackathon S4 (deadline: 2026-10-22; verify timezone and submission requirements on official event page before submitting).
+FormLab is a local-first TypeScript SDK that helps existing React forms survive browser refreshes, draft schema changes, and ambiguous network outcomes during submission.
 
-FormLab is an open-source, local-first TypeScript SDK that helps existing React forms survive browser refreshes, draft schema changes, and ambiguous network outcomes during submission. It includes a small Hono server-side idempotency helper and an interactive grant application demo / Failure Lab.
+It includes a React adapter, a Hono-based Cloudflare Worker, and a D1-backed idempotency helper, plus an interactive demo with a Failure Lab.
 
-## Read in order
-1. `AGENTS.md` — autonomous coding-agent instructions and completion gate.
-2. `docs/01-product-spec.md` — exact scope and user journeys.
-3. `docs/02-architecture.md` — packages, data flow, deployment.
-4. `docs/03-sdk-api-contract.md` — public interfaces and semantics.
-5. `docs/04-recovery-state-machine.md` — submission recovery and invariants.
-6. `docs/05-storage-and-migration.md` — draft persistence, migration and privacy.
-7. `docs/06-server-idempotency.md` — atomic D1 writes and conflict behavior.
-8. `docs/07-demo-ux.md` — demo UI and genuine fault injection.
-9. `docs/08-testing-plan.md` — tests, TestSprite and PR evidence.
-10. `docs/09-implementation-plan.md` — milestones and delivery checklist.
-11. `docs/10-security-and-threat-model.md` — limits and mitigations.
-12. `docs/11-deployment-and-submission.md` — deploy and submit.
+## Problem
 
-## Non-negotiables
-- No claim of exactly-once network delivery. Guarantees apply only to same key + same payload within server retention window and a successful atomic commit.
-- Frontend may label lost responses **uncertain**, not **failed**.
-- **Never** use client-only duplicate prevention as evidence of backend idempotency.
-- A persisted submission intent is immutable while retrying.
-- Never silently discard original draft on migration failure.
-- Never persist excluded fields; demo contains no real sensitive information.
-- Failure Lab faults must be real and confined to non-production/demo controls.
-- Tests must assert observable behavior and database state, not just UI text.
+Web forms lose user input on refresh, break when schemas change, and create duplicate submissions when network responses are lost. FormLab addresses these by persisting drafts locally, migrating schemas safely, and enforcing idempotent submissions on the backend.
 
-## Recommended commands after implementation
-`pnpm install`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm test:e2e`, `pnpm build`.
+## Live Demo
 
-## Agent starting prompt
-> Implement this repository from scratch, following AGENTS.md and all docs in order. Build the smallest end-to-end vertical slice first. Keep scope strict. Do not mark requirements done without tests. If a cloud-specific API differs from assumptions, consult current official documentation and document the deviation. Run lint/typecheck/unit/integration/E2E/build, fix failures, and report any remaining blockers. Do not invent TestSprite passes or deploy success.
+- App: https://formlab-web.lendha930.workers.dev
+- Repository: https://github.com/Lexiie/formlab
 
-## Current implementation status
-- Frontend builds and passes Impeccable audit.
-- Unit tests: 8 passing.
-- Deployment and TestSprite integration pending user authorization.
+## Key Features
 
-## Test results
-- Unit: 8 passing
-- D1 integration: 4 passing
-- E2E smoke: 1 passing
+- Draft autosave and restore after refresh
+- Schema migration with preview and rollback safety
+- Sensitive field exclusion before storage
+- Idempotent submission with stable idempotency keys
+- Lost-response recovery (status becomes `uncertain`, retry reuses key/body)
+- Pending submission recovery after refresh
+- Failure Lab for deterministic fault injection (demo-only)
 
-## TestSprite
-- Executed on PR #3: 5/5 passed.
-- Report: testsprite_tests/testsprite-mcp-test-report.md
+## How It Works
+
+1. Form changes are debounced and saved to IndexedDB.
+2. On load, the SDK previews a migration and asks for restore confirmation.
+3. Submission creates an immutable intent before the network call.
+4. If the response is lost after commit, the client marks the submission `uncertain`.
+5. Retry reuses the same key and canonical payload; the server replays the original result.
+
+## Quick Start
+
+```bash
+pnpm install
+pnpm build
+pnpm test
+pnpm test:integration
+pnpm test:e2e
+```
+
+Run the web app:
+
+```bash
+cd apps/web
+pnpm dev
+```
+
+Deploy (Cloudflare):
+
+```bash
+cd apps/web
+npx wrangler d1 migrations apply formlab-db --remote
+npx wrangler deploy
+```
+
+## SDK Usage
+
+```tsx
+const methods = useForm<Application>({ resolver: zodResolver(schema), defaultValues });
+const lab = useFormLab({
+  form: methods,
+  formId: 'grant-demo',
+  schemaVersion: 2,
+  migrations: { 1: migrateV1ToV2 },
+  exclude: ['secretNote'],
+});
+```
+
+## Architecture
+
+- `packages/core`: persistence, migrations, intent, events (no React)
+- `packages/react`: React Hook Form adapter
+- `packages/server`: D1 idempotency processing helper
+- `apps/web`: React + Vite + Tailwind UI, Hono Worker, D1 migrations
+
+## Testing & TestSprite
+
+- Unit tests: 8 passing
+- D1 integration tests: 4 passing
+- Playwright E2E: 3 passing
+- TestSprite: 5/5 passed (PR #3)
+- Report: `testsprite_tests/testsprite-mcp-test-report.md`
+- Evidence: https://www.testsprite.com/dashboard-v3/o/75d9e46a-15c5-5bf8-81fb-91671d3a9934/projects/486db87b-c781-4f67-97a6-bc16cf4bb3a2/execution/00ca09cb-9c53-4e5f-882d-c9439d7cc79e
+
+## Limitations
+
+- No exactly-once network delivery; guarantees apply only to same key + same payload within the retention window.
+- D1 concurrency not load-tested under production traffic.
+- E2E coverage limited to 3 scenarios.
+- TestSprite suite covers the happy path (5 tests).
