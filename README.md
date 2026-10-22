@@ -11,6 +11,7 @@ Web forms lose user input on refresh, break when schemas change, and create dupl
 ## Live Demo
 
 - App: https://formlab-web.lendha930.workers.dev
+- Demo video: `docs/demo.webm`
 - Repository: https://github.com/Lexiie/formlab
 
 ## Key Features
