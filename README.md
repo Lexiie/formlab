@@ -33,19 +33,23 @@ Web forms lose user input on refresh, break when schemas change, and create dupl
 
 ## Quick Start
 
+Prerequisites: Node 22+, pnpm, and Playwright browsers.
+
 ```bash
 pnpm install
+npx playwright install chromium
 pnpm build
 pnpm test
 pnpm test:integration
 pnpm test:e2e
 ```
 
-Run the web app:
+Run the web app (frontend + local Worker API):
 
 ```bash
 cd apps/web
 pnpm dev
+# in another terminal: npx wrangler dev --port 8787
 ```
 
 Deploy (Cloudflare):
@@ -67,6 +71,19 @@ const lab = useFormLab({
   migrations: { 1: migrateV1ToV2 },
   exclude: ['secretNote'],
 });
+
+// Restore a saved draft
+if (lab.restorePreview?.status === 'available') {
+  await lab.restore(); // or lab.discard()
+}
+
+// Submit (idempotent)
+await lab.submit();
+
+// Retry after an uncertain outcome
+if (lab.submissionStatus === 'uncertain') {
+  await lab.retry();
+}
 ```
 
 ## Architecture

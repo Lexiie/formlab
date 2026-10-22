@@ -20,3 +20,5 @@ jobs:
       - run: pnpm test
       - run: pnpm test:integration
       - run: pnpm --filter web build
+      - run: npx playwright install --with-deps chromium
+      - run: pnpm test:e2e
